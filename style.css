@@ -42,3 +42,6 @@ body {
     height: auto;
 }
 
+.taskDone{
+    text-decoration: line-through;
+}
