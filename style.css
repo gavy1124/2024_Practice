@@ -15,7 +15,7 @@ body {
 .menuArea{
     display: flex;
     border-bottom: 1px solid gray;
-    
+    cursor:pointer;
 }
 .menuArea div{
     padding: 1em;

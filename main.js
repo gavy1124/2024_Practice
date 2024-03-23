@@ -12,14 +12,97 @@
 // 유저가 끝남 탭을 누르면  끝난 아이템만,   진행중탭 > 진행중 아이템만
 // 유저가 전체탭을 누르면 다시 전체 아이템으로 돌아옴.
 
-
-
+let list = []
 let taskInput = document.getElementById("taskInput")
 let addBtn = document.getElementById("addBtn")
 let taskList = []
+let tabs = document.querySelectorAll(".menuArea div")
+let mode = 'all';
+let filterList = [];
+let ev ='';
 
-// + 클릭 리스너
-addBtn.addEventListener("click", addTask)
+
+
+
+
+//menu버튼
+function filter(event) {
+    
+    mode = event.target.id;
+    
+    
+    filterList = []
+    if (mode === "all") {
+        render();
+
+
+    } else if (mode === "onGoing") {
+        for (let i = 0; i < taskList.length; i++) {
+            if (taskList[i].isComplete === false) {
+                filterList.push(taskList[i])
+            }
+        }
+
+    } else if (mode === "done") {
+        for (let i = 0; i < taskList.length; i++) {
+            if (taskList[i].isComplete === true) {
+                filterList.push(taskList[i])
+            }
+        }
+    }
+    render()
+}
+
+
+
+// 화면출력 함수
+function render() {
+    //내가선택한 탭에따라서 리스트를 달리 보여준다.
+    list = []
+    if (mode === 'all') {
+        list = taskList;
+    } else if (mode === 'onGoing' || mode === 'done') {
+        list = filterList;
+    }
+
+    let resultHTML = '';
+    for (let i = 0; i < list.length; i++) {
+
+        if (list[i].isComplete == true) {
+            resultHTML += `<div class="task">
+            <div class = "taskDone">${list[i].taskContent}</div>
+            <div>
+                <button onClick="toggleComplete('${list[i].id}')">Check</button>
+                <button onClick="deleteTask('${list[i].id}')">delete</button>
+            </div>
+        </div>`;
+        } else {
+            resultHTML += `<div class="task">
+            <div>${list[i].taskContent}</div>
+            <div>
+                <button onClick="toggleComplete('${list[i].id}')">Check</button>
+                <button onClick="deleteTask('${list[i].id}')">delete</button>
+            </div>
+        </div>`;
+        }
+    }
+    document.getElementById("taskBoard").innerHTML = resultHTML;
+    //console.log(taskList)
+}
+// Delete 함수
+function deleteTask(id) {
+    for (let i = 0; i < taskList.length; i++) {
+        if (taskList[i].id == id) {
+            taskList.splice(i, 1)
+        }
+    }
+    //render()
+    filter(ev);
+}
+
+
+
+
 
 
 // +버튼
@@ -35,41 +118,14 @@ function addTask() {
 }
 
 
-// 화면출력 함수
-function render() {
-    let resultHTML = '';
-    for (let i = 0; i < taskList.length; i++) {
-
-        if (taskList[i].isComplete == true) {
-            resultHTML += `<div class="task">
-            <div class = "taskDone">${taskList[i].taskContent}</div>
-            <div>
-                <button onClick="toggleComplete('${taskList[i].id}')">Check</button>
-                <button onClick="deleteTask('${taskList[i].id}')">delete</button>
-            </div>
-        </div>`;
-        } else {
-            resultHTML += `<div class="task">
-            <div>${taskList[i].taskContent}</div>
-            <div>
-                <button onClick="toggleComplete('${taskList[i].id}')">Check</button>
-                <button onClick="deleteTask('${taskList[i].id}')">delete</button>
-            </div>
-        </div>`;
-
-        }
 
 
-    }
-    document.getElementById("taskBoard").innerHTML = resultHTML;
-    console.log(taskList)
-}
 
 
 
 // 각 task의 check버튼함수
 function toggleComplete(id) {
-    console.log(id)
+    //console.log(id)
     for (let i = 0; i < taskList.length; i++) {
         if (taskList[i].id == id) {
             taskList[i].isComplete = !taskList[i].isComplete;
@@ -77,8 +133,9 @@ function toggleComplete(id) {
         }
 
     }
-    
+    console.log(taskList)
     render()
+    //filter();
 }
 
 
@@ -89,31 +146,16 @@ function randomIdGenerate() {
 
 
 
-// Delete 함수
-function deleteTask(id){
-    for (let i = 0; i < taskList.length; i++) {
-        if(taskList[i].id ==id){
-            
-            taskList.splice(i,1)
-            break;
-        }
-        
-    }
-    render()
+// + 클릭 리스너
+addBtn.addEventListener("click", addTask)
+taskInput.addEventListener("focus", function () { taskInput.value = '' })
+
+for (let i = 1; i < tabs.length; i++) {
+    tabs[i].addEventListener("click", function (event) {
+        filter(event)
+        ev = event;
+    })
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
