@@ -1,0 +1,25 @@
+body{
+  margin: 0;
+  background-image: url(image/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.container{
+  min-height: 100vh;
+  background-color: rgb(219, 219, 219);
+}
+
+.menuArea{
+  display: flex;
+  
+}
+.menuArea div{
+  padding: 2em;  
+}
+
+.lists{
+  display: flex;
+  
+}
