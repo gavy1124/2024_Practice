@@ -13,13 +13,27 @@ body{
 
 .menuArea{
   display: flex;
+  border-bottom : 1px solid black;
   
 }
 .menuArea div{
-  padding: 2em;  
+  padding: 1em;  
+  cursor: pointer;
+  position: relative;
 }
 
-.lists{
+.list{
   display: flex;
-  
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.area{
+  border : 1px solid black;
+  margin-top: 2em;
+}
+
+#underLine{
+  position: absolute;
+  background-color: yellow;
 }
