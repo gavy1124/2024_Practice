@@ -37,3 +37,7 @@ body{
   position: absolute;
   background-color: yellow;
 }
+
+.done{
+  text-decoration: line-through;
+}
