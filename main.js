@@ -132,3 +132,25 @@ function del(id) {
 //   render();
   filter(ev)
 }
+
+
+let underLine = document.getElementById("underLine")
+console.log(underLine)
+let menuArea2 = document.querySelectorAll(".menuArea div")
+console.log(menuArea2)
+
+menuArea.forEach(
+  item => item.addEventListener("click", (e)=>horizontalIndicator(e))
+) 
+
+// for (let i = 1; i < menuArea2.length; i++) {
+//   menuArea2[i].addEventListener("click", (e) => horizontalIndicator(e) )
+// }
+
+
+function horizontalIndicator(e){
+  console.log(e)
+  underLine.style.left = e.currentTarget.offsetLeft + "px";
+  underLine.style.width = e.currentTarget.offsetWidth + "px";
+  underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight + "px";
+}
