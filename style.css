@@ -19,6 +19,7 @@ body{
 }
 
 .menuArea{
+  position: relative;
   display: flex;
   border-bottom: 1px solid black;
 }
@@ -39,4 +40,10 @@ body{
 
 .complete{
   text-decoration: line-through;
+}
+
+#underLine{
+  position: absolute;
+  background-color: red;
+  width: 0;
 }
