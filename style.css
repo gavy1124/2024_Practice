@@ -3,12 +3,14 @@ body{
   margin: 0;
   background-image: url(image/background.jpg);
   background-repeat: no-repeat;
-
+  
 }
 
 .container{
   min-height: 100vh;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   background-color:rgb(185, 185, 185)
+  
 }
 
 .area{
@@ -33,4 +35,8 @@ body{
 
 #textIn{
   width: 96%;
+}
+
+.complete{
+  text-decoration: line-through;
 }
