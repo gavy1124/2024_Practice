@@ -1,0 +1,40 @@
+nav a{
+    text-decoration: none;
+    color: black;
+    margin: 2em;
+}
+
+
+
+
+nav:first-child{
+    display: flex;
+    justify-content: center;
+}
+
+nav:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+#h_underLine{
+    position: absolute;
+    width: 0%;
+    background-color: red;
+    top: 0;
+    left: 0;
+    height: 4px;
+    transition: 0.5s;
+}
+
+#v_underLine{
+    position: absolute;
+    width: 0%;
+    background-color: blue;
+    top: 0;
+    left: 0;
+    height: 4px;
+    transition: 0.5s;
+}
