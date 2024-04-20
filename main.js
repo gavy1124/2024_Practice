@@ -61,7 +61,6 @@ function add() {
 }
 
 function render() {
-  // list = []
   if(mode === "all"){
     list = taskList;
   }else if(mode === "onGoing" || mode === "done"){
