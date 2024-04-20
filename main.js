@@ -8,14 +8,12 @@ let list = []
 let underLine = document.getElementById("underLine")
 
 
-for (let i = 1; i < menuArea.length; i++) {
+for (let i = 0; i < menuArea.length; i++) {
   menuArea[i].addEventListener("click", function (event) {
     filter(event);
     mode = event;
     console.log(menuArea[i])
-    // underLine.style.left = event.currentTarget.offsetLeft + "px";
-    // underLine.style.width = event.currentTarget.offsetWidth + "px";
-    // underLine.style.top = event.currentTarget.offsetTop + event.currentTarget.offsetHeight + "px";
+    
   });
 }
 
@@ -63,14 +61,12 @@ function add() {
 }
 
 function render() {
-  list = []
+  // list = []
   if(mode === "all"){
     list = taskList;
   }else if(mode === "onGoing" || mode === "done"){
     list = filterList;
   }
-
-
 
   let ResultHTML = ``;
   for (let i = 0; i < list.length; i++) {
@@ -126,9 +122,7 @@ function generateId() {
 
 
 let menuArea2 = document.querySelectorAll(".menuArea div")
-console.log(menuArea2)
 menuArea2.forEach(menu=>menu.addEventListener("click", (e)=> f_under(e)))
-// v_menuArea2.forEach(menu => menu.addEventListener("click", (e) => v_indicator(e)))
 
 function f_under(e){
   underLine.style.left = e.currentTarget.offsetLeft + "px";
