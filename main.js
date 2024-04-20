@@ -5,9 +5,17 @@ let mode = "all";
 let menuArea = document.querySelectorAll(".menuArea div");
 let filterList = []
 let list = []
+let underLine = document.getElementById("underLine")
+
+
 for (let i = 1; i < menuArea.length; i++) {
   menuArea[i].addEventListener("click", function (event) {
     filter(event);
+    mode = event;
+    console.log(menuArea[i])
+    // underLine.style.left = event.currentTarget.offsetLeft + "px";
+    // underLine.style.width = event.currentTarget.offsetWidth + "px";
+    // underLine.style.top = event.currentTarget.offsetTop + event.currentTarget.offsetHeight + "px";
   });
 }
 
@@ -15,7 +23,7 @@ function filter(e){
   mode = e.target.id;
   filterList = []
 
-  console.log(mode)  
+  // console.log(mode)  
   if(mode === "all"){
     render();
   }else if(mode === "onGoing"){
@@ -49,7 +57,9 @@ function add() {
     isComplete: false,
   };
   taskList.push(userInput);
+  mode = "all"
   render();
+  
 }
 
 function render() {
@@ -93,7 +103,8 @@ function del(id) {
       break;
     }
   }
-  render();
+  // render();
+  filter(mode)
 }
 
 function check(id) {
@@ -112,3 +123,15 @@ function generateId() {
 
 
 
+
+
+let menuArea2 = document.querySelectorAll(".menuArea div")
+console.log(menuArea2)
+menuArea2.forEach(menu=>menu.addEventListener("click", (e)=> f_under(e)))
+// v_menuArea2.forEach(menu => menu.addEventListener("click", (e) => v_indicator(e)))
+
+function f_under(e){
+  underLine.style.left = e.currentTarget.offsetLeft + "px";
+  underLine.style.width = e.currentTarget.offsetWidth + "px";
+  underLine.style.top = e.currentTarget.offsetTop + e.currentTarget.offsetHeight + "px";
+}

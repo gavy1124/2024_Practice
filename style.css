@@ -23,7 +23,7 @@ body{
 .menuArea{
   display: flex;
   border-bottom: 1px solid black;
-
+  /* position: relative; */
 }
 .menuArea div{
   margin: 1em;
@@ -49,9 +49,9 @@ body{
 #underLine{
   position: absolute;
   background-color: red;
-  height: 0;
+  height: 3px;
   top: 0;
   left: 0;
   width: 0;
-
+  transition: 0.5s;
 }
